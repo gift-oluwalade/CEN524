@@ -1,0 +1,30 @@
+#This is how to solve geometric progression using the python code#
+
+import math
+
+def geometric_progression(a, r, n):
+    sequence = []
+
+    if r > abs(1):  # Case 1: Common ratio greater than 1 in magnitude
+        sequence = [a * math.pow(r, i) for i in range(n)]
+
+    elif 0 < r < abs(1):  # Case 2: Common ratio less than 1 in magnitude
+        sequence = [a * (1 - math.pow(r, i)) / (1 - r) for i in range(n)]
+
+    elif abs(r) == float('inf'):  # Case 3: When r approaches infinity
+        sequence = [a * float('inf') if i == 0 else 0 for i in range(n)]
+    
+    else:
+        sequence = [a] * n  # In case of undefined r values, return constant values
+    
+    return sequence
+
+# Example parameters
+a = 2   # First term
+r = 3   # Common ratio
+n = 5   # Number of terms
+
+# Call function and display result
+gp_sequence = geometric_progression(a, r, n)
+print("Geometric Progression:", gp_sequence)
+
